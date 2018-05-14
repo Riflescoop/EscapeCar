@@ -42,12 +42,14 @@ var headfail_bool=false;
 var headsuccess_bool=false;
 var congratulations_bool=false;
 var fail_bool=false;
+var explanation1_bool=false;
 
 
 function preload() {
   congratulations_img=loadImage('Congratulations.png');
   fail_img=loadImage('fail.png');
   title_img=loadImage('title.png');
+  explanation1_img=loadImage('explanation1.png');
   
   layer_1_img0=loadImage('layer_1/000.jpg');
   layer_1_img1=loadImage('layer_1/001.jpg');
@@ -318,9 +320,20 @@ function setup() {
 
 function congratulations() {
   image(congratulations_img,0,0,1900,900);
+  if(keyPressed) {
+    congratulations_bool=false;
+    explanation1_bool=true;
+  }
 }
 function fail() {
   image(fail_img,0,0,1900,900);
+  if(keyPressed) {
+    congratulations_bool=false;
+    explanation1_bool=true;
+  }
+}
+function explanation1() {
+  image(explanation1_img,0,0,1900,900);
 }
 function title() {
   image(title_img,0,0,1900,900);
@@ -1471,5 +1484,8 @@ function draw() {
     if(fail_bool) {
       fail();
     }
+  }
+  if(explanation1_bool) {
+    explanation1();
   }
 }
