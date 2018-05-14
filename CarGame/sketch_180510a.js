@@ -320,14 +320,14 @@ function setup() {
 
 function congratulations() {
   image(congratulations_img,0,0,1900,900);
-  if(keyPressed) {
+  function keyPressed() {
     congratulations_bool=false;
     explanation1_bool=true;
   }
 }
 function fail() {
   image(fail_img,0,0,1900,900);
-  if(keyPressed) {
+  function keyPressed() {
     congratulations_bool=false;
     explanation1_bool=true;
   }
