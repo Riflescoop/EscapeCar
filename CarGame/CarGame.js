@@ -43,6 +43,7 @@ var headsuccess_bool=false;
 var congratulations_bool=false;
 var fail_bool=false;
 var explanation1_bool=false;
+var explanation2_bool=false;
 
 
 function preload() {
@@ -50,6 +51,7 @@ function preload() {
   fail_img=loadImage('fail.png');
   title_img=loadImage('title.png');
   explanation1_img=loadImage('explanation1.png');
+  explanation2_img=loadImage('explanation2.png');
   
   layer_1_img0=loadImage('layer_1/000.jpg');
   layer_1_img1=loadImage('layer_1/001.jpg');
@@ -319,19 +321,38 @@ function setup() {
 }
 function explanation1() {
   image(explanation1_img,0,0,1900,900);
+  if(keyIsPressed && key.toString()==="2") {
+    explanation1_bool=false;
+    explanation2_bool=true;
+  }
+}
+function explanation2() {
+  image(explanation2_img,0,0,1900,900);
+  if(keyIsPressed && key.toString()==="1") {
+    explanation2_bool=false;
+    explanation1_bool=true;
+  }
 }
 function congratulations() {
   image(congratulations_img,0,0,1900,900);
-  if(mouseIsPressed) {
+  if(keyIsPressed && key.toString()==="1") {
     congratulations_bool=false;
     explanation1_bool=true;
+  }
+  if(keyIsPressed && key.toString()==="2") {
+    congratulations_bool=false;
+    explanation2_bool=true;
   }
 }
 function fail() {
   image(fail_img,0,0,1900,900);
-  if(mouseIsPressed) {
+  if(keyIsPressed && key.toString()==="1") {
     fail_bool=false;
     explanation1_bool=true;
+  }
+  if(keyIsPressed && key.toString()==="2") {
+    fail_bool=false;
+    explanation2_bool=true;
   }
 }
 function title() {
@@ -1402,7 +1423,6 @@ function draw() {
   else if(hammersuccess_bool) {
     hammersuccess();
   }
-
   else if(watermelonsuccess_bool) {
     watermelonsuccess();
   }
@@ -1443,13 +1463,16 @@ function draw() {
   else if(shoefail_bool) {
     shoefail();
   }
-  if(fail_bool) {
-    fail();
-  }
   if(congratulations_bool) {
     congratulations();
   }
+  if(fail_bool) {
+    fail();
+  }
   if(explanation1_bool) {
     explanation1();
+  }
+  if(explanation2_bool) {
+    explanation2();
   }
 }
