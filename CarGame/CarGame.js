@@ -1200,7 +1200,7 @@ function lockpickfail() {
   }
   if(lockpickfail_count==10) {
     lockpickfail_bool=false;
-    layer_3=true;
+    layer_3_bool=true;
   }
   lockpickfail_count++;
 }
