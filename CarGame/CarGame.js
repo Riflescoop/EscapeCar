@@ -317,9 +317,7 @@ function setup() {
   textSize(30);
   frameRate(3)
 }
-function explanation1() {
-  image(explanation1_img,0,0,1900,900);
-}
+
 function congratulations() {
   image(congratulations_img,0,0,1900,900);
   if(mouseIsPressed) {
@@ -330,9 +328,12 @@ function congratulations() {
 function fail() {
   image(fail_img,0,0,1900,900);
   if(mouseIsPressed) {
-    fail_bool=false;
+    congratulations_bool=false;
     explanation1_bool=true;
   }
+}
+function explanation1() {
+  image(explanation1_img,0,0,1900,900);
 }
 function title() {
   image(title_img,0,0,1900,900);
@@ -341,7 +342,6 @@ function title() {
     layer_1_bool=true;
   }
 }
-
 function matches() {
   switch(matches_count%12) {
     case 0:
@@ -1200,7 +1200,7 @@ function lockpickfail() {
   }
   if(lockpickfail_count==10) {
     lockpickfail_bool=false;
-    layer_3_bool=true;
+    layer_3=true;
   }
   lockpickfail_count++;
 }
@@ -1319,7 +1319,7 @@ function layer_2() {
     if(mouseIsPressed && mouseX>550 && mouseX<750 && mouseY>600 && mouseY<800) {
       layer_2_bool=false;
       lockpick_chance=random();
-      if(lockpick_chance>0.3) {
+      if(lockpick_chance>0.2) {
         lockpicksuccess_bool=true;
       }
       else {
@@ -1386,9 +1386,15 @@ function draw() {
   }
   else if(match_bool) {
     matches();
+    if(fail_bool) {
+      fail();
+    }
   }
   else if(screwdriversuccess_bool) {
     screwdriversuccess();
+    if(congratulations_bool) {
+      congratulations();
+    }
   }
   else if(screwdriverfail_bool) {
     screwdriverfail();
@@ -1398,34 +1404,58 @@ function draw() {
   }
   else if(hammerfail_bool) {
     hammerfail();
+    if(fail_bool) {
+      fail();
+    }
   }
   else if(hammersuccess_bool) {
     hammersuccess();
+    if(congratulations_bool) {
+      congratulations();
+    }
   }
 
   else if(watermelonsuccess_bool) {
     watermelonsuccess();
+    if(congratulations_bool) {
+      congratulations();
+    }
   }
   else if(watermelonnothing_bool) {
     watermelonnothing();
   }
   else if(watermelonfail_bool) {
     watermelonfail();
+    if(fail_bool) {
+      fail();
+    }
   }
   else if(iphonesuccess_bool) {
     iphonesuccess();
+    if(congratulations_bool) {
+      congratulations();
+    }
   }
   else if(iphonenothing_bool) {
     iphonenothing();
   }
   else if(iphonefail_bool) {
     iphonefail();
+    if(fail_bool) {
+      fail();
+    }
   }
   else if(lockpickfail_bool) {
     lockpickfail();
+    if(fail_bool) {
+      fail();
+    }
   }
   else if(lockpicksuccess_bool) {
     lockpicksuccess();
+    if(congratulations_bool) {
+      congratulations();
+    }
   }
 
   if(layer_3_bool) {
@@ -1433,21 +1463,27 @@ function draw() {
   }
   else if(headsuccess_bool) {
     headsuccess();
+    if(congratulations_bool) {
+      congratulations();
+    }
   }
   else if(headfail_bool) {
     headfail();
+    if(fail_bool) {
+      fail();
+    }
   }
   else if(shoesuccess_bool) {
     shoesuccess();
+    if(congratulations_bool) {
+      congratulations();
+    }
   }
   else if(shoefail_bool) {
     shoefail();
-  }
-  if(fail_bool) {
-    fail();
-  }
-  if(congratulations_bool) {
-    congratulations();
+    if(fail_bool) {
+      fail();
+    }
   }
   if(explanation1_bool) {
     explanation1();
