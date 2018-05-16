@@ -41,10 +41,15 @@ var shoesuccess_bool=false;
 var headfail_bool=false;
 var headsuccess_bool=false;
 var congratulations_bool=false;
-var fail_bool=false;
 var explanation1_bool=false;
 var explanation2_bool=false;
 
+var match_comment=false;
+var hammerfail_comment=false;
+var iphonefail_comment=false;
+var watermelonfail_comment=false;
+var shoefail_comment=false;
+var headfail_comment=false;
 
 function preload() {
   congratulations_img=loadImage('Congratulations.png');
@@ -320,17 +325,21 @@ function setup() {
   frameRate(3)
 }
 function explanation1() {
-  image(explanation1_img,0,0,1900,900);
-  if(keyIsPressed && key.toString()==="2") {
-    explanation1_bool=false;
-    explanation2_bool=true;
+  if(explanation1_bool) {
+    image(explanation1_img,0,0,1900,900);
+    if(keyIsPressed && key.toString()==="2") {
+      explanation1_bool=false;
+      explanation2_bool=true;
+    }
   }
 }
 function explanation2() {
-  image(explanation2_img,0,0,1900,900);
-  if(keyIsPressed && key.toString()==="1") {
-    explanation2_bool=false;
-    explanation1_bool=true;
+  if(explanation2_bool) {
+    image(explanation2_img,0,0,1900,900);
+    if(keyIsPressed && key.toString()==="1") {
+      explanation2_bool=false;
+      explanation1_bool=true;
+    }
   }
 }
 function congratulations() {
@@ -347,11 +356,21 @@ function congratulations() {
 function fail() {
   image(fail_img,0,0,1900,900);
   if(keyIsPressed && key.toString()==="1") {
-    fail_bool=false;
+    match_comment=false;
+    hammerfail_comment=false;
+    iphonefail_comment=false;
+    watermelonfail_comment=false;
+    shoefail_comment=false;
+    headfail_comment=false;
     explanation1_bool=true;
   }
   if(keyIsPressed && key.toString()==="2") {
-    fail_bool=false;
+    match_comment=false;
+    hammerfail_comment=false;
+    iphonefail_comment=false;
+    watermelonfail_comment=false;
+    shoefail_comment=false;
+    headfail_comment=false;
     explanation2_bool=true;
   }
 }
@@ -405,7 +424,7 @@ function matches() {
   }
   if(matches_count==11) {
     match_bool=false;
-    fail_bool=true;
+    matches_comment=true;
   }
   matches_count++;
 }
@@ -568,7 +587,7 @@ function iphonefail() {
   }
   if(iphonefail_count==18) {
     iphonefail_bool=false;
-    fail_bool=true;
+    iphonefail_comment=true;
   }
   iphonefail_count++;
 }
@@ -739,7 +758,7 @@ function watermelonfail() {
   }
   if(watermelonfail_count==11) {
     watermelonfail_bool=false;
-    fail_bool=true;
+    watermelonfail_comment=true;
   }
   watermelonfail_count++;
 }
@@ -900,7 +919,7 @@ function shoefail() {
   }
   if(shoefail_count==12) {
     shoefail_bool=false;
-    fail_bool=true;
+    shoefail_comment=true;
   }
   shoefail_count++;
 }
@@ -1034,7 +1053,7 @@ function headfail() {
   }
   if(headfail_count==9) {
     headfail_bool=false;
-    fail_bool=true;
+    headfail_comment=true;
   }
   headfail_count++;
 }
@@ -1121,7 +1140,7 @@ function hammerfail() {
   }
   if(hammerfail_count==8) {
     hammerfail_bool=false;
-    fail_bool=true;
+    hammerfail_comment=true;
   }
   hammerfail_count++;
 }
@@ -1466,13 +1485,30 @@ function draw() {
   if(congratulations_bool) {
     congratulations();
   }
-  if(fail_bool) {
-    fail();
+  if(match_comment) {
+        fail();
+        text("You really thought that was a good idea? Remember, don't leave flammable objects in cars on hot days.",100,100);
   }
-  if(explanation1_bool) {
-    explanation1();
+  if(hammerfail_comment) {
+      fail();
+      text("Next time, aim at the window, not your face. -The Developers",100,100);
   }
-  if(explanation2_bool) {
-    explanation2();
+  if(iphonefail_comment) {
+      fail();
+      text("Dang it, you can't play Fortnite Mobile anymore(In reality, the phone probably won't catch on fire but it could get damaged if you leave it).",100,100);
   }
+  if(watermelonfail_comment) {
+      fail();
+      text("You should practice throwing watermelons more often. Practice makes perfect!",100,100);
+  }
+  if(shoefail_comment) {
+      fail();
+      text("A shoe, really? You don't have steel toed boots you know.",100,100);
+  }
+  if(headfail_comment) {
+      fail();
+      text("Are you trying to get a concussion?",100,100);
+  }
+  explanation1();
+  explanation2();
 }
