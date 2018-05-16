@@ -1495,7 +1495,8 @@ function draw() {
   }
   if(iphonefail_comment) {
       fail();
-      text("Dang it, you can't play Fortnite Mobile anymore(In reality, the phone probably won't catch on fire but it could get damaged if you leave it).",100,100);
+      text("Dang it, you can't play Fortnite Mobile anymore",100,100);
+      text("In reality, the phone probably won't catch on fire but it could get damaged if you leave it.",100,120);
   }
   if(watermelonfail_comment) {
       fail();
