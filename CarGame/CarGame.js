@@ -43,6 +43,7 @@ var headsuccess_bool=false;
 var congratulations_bool=false;
 var explanation1_bool=false;
 var explanation2_bool=false;
+var warning_bool=false;
 
 var matches_comment=false;
 var hammerfail_comment=false;
@@ -57,6 +58,7 @@ function preload() {
   title_img=loadImage('title.png');
   explanation1_img=loadImage('explanation1.png');
   explanation2_img=loadImage('explanation2.png');
+  warning_img=loadImage('warning.png');
   
   layer_1_img0=loadImage('layer_1/000.jpg');
   layer_1_img1=loadImage('layer_1/001.jpg');
@@ -324,12 +326,19 @@ function setup() {
   textSize(30);
   frameRate(3)
 }
+function warning() {
+  image(warning_img,0,0,1900,900);
+}
 function explanation1() {
   if(explanation1_bool) {
     image(explanation1_img,0,0,1900,900);
     if(keyIsPressed && key.toString()==="2") {
       explanation1_bool=false;
       explanation2_bool=true;
+    }
+    if(keyIsPressed && key.toString()===" ") {
+      explanation1_bool=false;
+      warning_bool=true;
     }
   }
 }
@@ -339,6 +348,10 @@ function explanation2() {
     if(keyIsPressed && key.toString()==="1") {
       explanation2_bool=false;
       explanation1_bool=true;
+    }
+    if(keyIsPressed && key.toString()===" ") {
+      explanation2_bool=false;
+      warning_bool=true;
     }
   }
 }
@@ -1495,8 +1508,7 @@ function draw() {
   }
   if(iphonefail_comment) {
       fail();
-      text("Dang it, you can't play Fortnite Mobile anymore",100,100);
-      text("In reality, the phone probably won't catch on fire but it could get damaged if you leave it.",100,120);
+      text("Dang it, you can't play Fortnite Mobile anymore(In reality, the phone probably won't catch on fire but it could get damaged if you leave it).",100,100);
   }
   if(watermelonfail_comment) {
       fail();
@@ -1509,6 +1521,9 @@ function draw() {
   if(headfail_comment) {
       fail();
       text("Are you trying to get a concussion?",100,100);
+  }
+  if(warning_bool) {
+    warning();
   }
   explanation1();
   explanation2();
