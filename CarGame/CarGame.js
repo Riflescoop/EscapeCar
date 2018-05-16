@@ -1503,7 +1503,7 @@ function draw() {
   }
   if(shoefail_comment) {
       fail();
-      text("A shoe, really? You don't have steel toed boots you know.",100,100);
+      text("A shoe, really? You don't have steel toed boots you know. You probably died of embarrassment for trying to throw a shoe to break a window.",100,100);
   }
   if(headfail_comment) {
       fail();
