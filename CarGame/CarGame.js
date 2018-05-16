@@ -44,7 +44,7 @@ var congratulations_bool=false;
 var explanation1_bool=false;
 var explanation2_bool=false;
 
-var match_comment=false;
+var matches_comment=false;
 var hammerfail_comment=false;
 var iphonefail_comment=false;
 var watermelonfail_comment=false;
@@ -1485,9 +1485,9 @@ function draw() {
   if(congratulations_bool) {
     congratulations();
   }
-  if(match_comment) {
-        fail();
-        text("You really thought that was a good idea? Remember, don't leave flammable objects in cars on hot days.",100,100);
+  if(matches_comment) {
+      fail();
+      text("You really thought that was a good idea? Remember, don't leave flammable objects in cars on hot days.",100,100);
   }
   if(hammerfail_comment) {
       fail();
